@@ -1,12 +1,12 @@
-create table #ºÎ¼­
+create table #ë¶€ì„œ
 (deptno int, 
 dname varchar(14) not null,
 loc varchar(13))
 
-alter table #ºÎ¼­
+alter table #ë¶€ì„œ
 add primary key(deptno)
 
-alter table #ºÎ¼­
+alter table #ë¶€ì„œ
 alter column deptno int not null
 
-drop table #ºÎ¼­
+drop table #ë¶€ì„œ
