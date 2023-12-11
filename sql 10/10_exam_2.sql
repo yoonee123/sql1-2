@@ -1,12 +1,12 @@
--- ¼­Á¡º° °¡Àå ¸¹ÀÌ ÆÈ¸° Ã¥ Á¤º¸ Ãâ·Â
+-- ì„œì ë³„ ê°€ì¥ ë§ì´ íŒ”ë¦° ì±… ì •ë³´ ì¶œë ¥
 
--- 1-1) ¼­Á¡¾ÆÀÌµğ, Ã¥¾ÆÀÌµğ, ¼ö·® (sales »ç¿ë)
-select s1.stor_id as ¼­Á¡¾ÆÀÌµğ, s1.title_id as Ã¥¾ÆÀÌµğ, s1.qty as ¼ö·®
+-- 1-1) ì„œì ì•„ì´ë””, ì±…ì•„ì´ë””, ìˆ˜ëŸ‰ (sales ì‚¬ìš©)
+select s1.stor_id as ì„œì ì•„ì´ë””, s1.title_id as ì±…ì•„ì´ë””, s1.qty as ìˆ˜ëŸ‰
 from sales s1
 where s1.qty = (select max(qty) from sales s2 where s1.stor_id = s2.stor_id)
 
--- 1-2) ¼­Á¡ÀÌ¸§, Ã¥¾ÆÀÌµğ, ¼ö·® (sales, stores »ç¿ë)
-select stor_name as ¼­Á¡ÀÌ¸§, s1.title_id as Ã¥¾ÆÀÌµğ, s1.qty as ¼ö·®
+-- 1-2) ì„œì ì´ë¦„, ì±…ì•„ì´ë””, ìˆ˜ëŸ‰ (sales, stores ì‚¬ìš©)
+select stor_name as ì„œì ì´ë¦„, s1.title_id as ì±…ì•„ì´ë””, s1.qty as ìˆ˜ëŸ‰
 from sales s1 join stores s2
 on s1.stor_id = s2.stor_id
 where s1.qty = (select max(qty) from sales s2 where s1.stor_id = s2.stor_id)
@@ -18,13 +18,14 @@ select * from titles
 
 -- sampleDB
 
--- ÆÇ¸Å·®ÀÌ 10°³ ÀÌ»óÀÎ Á¦Ç°ÀÇ ¹øÈ£, Á¦Ç°¸í Ãâ·Â (EXISTS »ç¿ë)
--- exists´Â ¹İÈ¯ÇÏ´Â ÇàÀÇ µ¥ÀÌÅÍ Á¸Àç°¡ È®ÀÎµÇ¸é ´õ ÀÌ»ó Ã£Áö¾ÊÀ½ (¼Óµµ°¡ ºü¸§)
-select Á¦.Á¦Ç°¹øÈ£, Á¦Ç°¸í
-from Á¦Ç° Á¦ join ÆÇ¸Å ÆÇ
-on Á¦.Á¦Ç°¹øÈ£ = ÆÇ.Á¦Ç°¹øÈ£
-where exists (select 1 from ÆÇ¸Å ÆÇ where Á¦.Á¦Ç°¹øÈ£ = ÆÇ. Á¦Ç°¹øÈ£ and ÆÇ.ÆÇ¸Å¼ö·® >= 10)
+-- íŒë§¤ëŸ‰ì´ 10ê°œ ì´ìƒì¸ ì œí’ˆì˜ ë²ˆí˜¸, ì œí’ˆëª… ì¶œë ¥ (EXISTS ì‚¬ìš©)
+-- existsëŠ” ë°˜í™˜í•˜ëŠ” í–‰ì˜ ë°ì´í„° ì¡´ì¬ê°€ í™•ì¸ë˜ë©´ ë” ì´ìƒ ì°¾ì§€ì•ŠìŒ (ì†ë„ê°€ ë¹ ë¦„)
+  
+select ì œ.ì œí’ˆë²ˆí˜¸, ì œí’ˆëª…
+from ì œí’ˆ ì œ join íŒë§¤ íŒ
+on ì œ.ì œí’ˆë²ˆí˜¸ = íŒ.ì œí’ˆë²ˆí˜¸
+where exists (select 1 from íŒë§¤ íŒ where ì œ.ì œí’ˆë²ˆí˜¸ = íŒ. ì œí’ˆë²ˆí˜¸ and íŒ.íŒë§¤ìˆ˜ëŸ‰ >= 10)
 
-select * from Á¦Ç°
-select * from ÆÇ¸Å
+select * from ì œí’ˆ
+select * from íŒë§¤
 
