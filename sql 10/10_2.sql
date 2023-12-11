@@ -1,18 +1,18 @@
--- inÀº Áßº¹ ÀÚµ¿ Á¦°Å, joinÀº Á¦°ÅÇÏÁö ¾ÊÀ½ (distinct »ðÀÔÇØ¾ßÇÔ)
+-- inì€ ì¤‘ë³µ ìžë™ ì œê±°, joinì€ ì œê±°í•˜ì§€ ì•ŠìŒ (select ë’¤ì— distinct ì‚½ìž…í•´ì•¼í•¨)
 
-select distinct ÇÐ¹ø, ÀÌ¸§, ÆÀ.Á¶Àå
-from ÆÀÇÁ·ÎÁ§Æ® ÆÀ join Áöµµ±³¼ö ±³ 
-on ÆÀ.Á¶Àå = ±³.Á¶Àå
-where Àü°øÄÚµå = 'D02'
+select distinct í•™ë²ˆ, ì´ë¦„, íŒ€.ì¡°ìž¥
+from íŒ€í”„ë¡œì íŠ¸ íŒ€ join ì§€ë„êµìˆ˜ êµ 
+on íŒ€.ì¡°ìž¥ = êµ.ì¡°ìž¥
+where ì „ê³µì½”ë“œ = 'D02'
 
-select s1.Á¶ÀÌ¸§, s1.ÀÌ¸§, s1.Á¡¼ö
-from ÇÐ»ýÆò°¡ s1
-where s1.Á¡¼ö = (select max(Á¡¼ö) from ÇÐ»ýÆò°¡ s2
-				where s2.Á¶ÀÌ¸§ = s1.Á¶ÀÌ¸§)
+select s1.ì¡°ì´ë¦„, s1.ì´ë¦„, s1.ì ìˆ˜
+from í•™ìƒí‰ê°€ s1
+where s1.ì ìˆ˜ = (select max(ì ìˆ˜) from í•™ìƒí‰ê°€ s2
+				where s2.ì¡°ì´ë¦„ = s1.ì¡°ì´ë¦„)
 
-select s1.Á¶ÀÌ¸§, s1.ÀÌ¸§, s1.Á¡¼ö from ÇÐ»ýÆò°¡ s1
-where s1.Á¡¼ö in (select max(Á¡¼ö) 
-	 				from ÇÐ»ýÆò°¡ 
-				group by Á¶ÀÌ¸§)
+select s1.ì¡°ì´ë¦„, s1.ì´ë¦„, s1.ì ìˆ˜ from í•™ìƒí‰ê°€ s1
+where s1.ì ìˆ˜ in (select max(ì ìˆ˜) 
+	 				from í•™ìƒí‰ê°€ 
+				group by ì¡°ì´ë¦„)
 
 
