@@ -1,35 +1,38 @@
--- »óÇ° Å×ÀÌºíÀÇ Á¾·ù¿¡¼­ À§¿¡ ÇØ´çÇÏ´Â Ç×¸ñµé¸¸ ÀÔ·ÂµÇµµ·Ï Á¦¾àÀ» ºÎ¿©ÇÏ½Ã¿À.
+-- ìƒí’ˆ í…Œì´ë¸”ì˜ ì¢…ë¥˜ì—ì„œ ìœ„ì— í•´ë‹¹í•˜ëŠ” í•­ëª©ë“¤ë§Œ ì…ë ¥ë˜ë„ë¡ ì œì•½ì„ ë¶€ì—¬í•˜ì‹œì˜¤.
 
-create table »óÇ°
-(»óÇ°ÄÚµå char(3),
-»óÇ°¸í char(20),
-Á¾·ù char(20) check(Á¾·ù in('ÄÚÆ®','Á¡ÆÛ','ÀÚÄÏ','½ºÄ¿Æ®','¼ÅÃ÷')),
-»ö»ó char(10),
-´Ü°¡ int,
-ÀÔ°íÀÏÀÚ datetime)  
+create table ìƒí’ˆ
+(ìƒí’ˆì½”ë“œ char(3),
+ìƒí’ˆëª… char(20),
+ì¢…ë¥˜ char(20) check(ì¢…ë¥˜ in('ì½”íŠ¸','ì í¼','ìì¼“','ìŠ¤ì»¤íŠ¸','ì…”ì¸ ')),
+ìƒ‰ìƒ char(10),
+ë‹¨ê°€ int,
+ì…ê³ ì¼ì datetime)  
 
-exec sp_helpconstraint »óÇ°
+exec sp_helpconstraint ìƒí’ˆ
 
--- »óÇ°ÄÚµå¿¡ Á¦¾à¸íÀ» 'pf_»óÇ°ÄÚµå'·Î ¸¸µé°í Á¦¾àÀ» ºÎ¿©ÇÏ½Ã¿À.
+-- ìƒí’ˆì½”ë“œì— ì œì•½ëª…ì„ 'pf_ìƒí’ˆì½”ë“œ'ë¡œ ë§Œë“¤ê³  ì œì•½ì„ ë¶€ì—¬í•˜ì‹œì˜¤.
 
-alter table »óÇ°
-alter column »óÇ°ÄÚµå char(3) not null
+alter table ìƒí’ˆ
+alter column ìƒí’ˆì½”ë“œ char(3) not null
 
-alter table »óÇ°
-add constraint pf_»óÇ°ÄÚµå primary key (»óÇ°ÄÚµå)
+alter table ìƒí’ˆ
+add constraint pf_ìƒí’ˆì½”ë“œ primary key (ìƒí’ˆì½”ë“œ)
 
-drop table »óÇ°
+drop table ìƒí’ˆ
 
--- ÁÖ¹®Å×ÀÌºíÀ» »ı¼ºÇÏ°í »óÇ°ÄÚµå¸¦ ¿Ü·¡Å°¸¦ ÅëÇØ ÂüÁ¶ÇÏ½Ã¿À.
--- ´Ü, »óÇ°ÄÚµå°¡ ¼öÁ¤µÇ°Å³ª »èÁ¦µÉ¶§µµ ¾÷µ¥ÀÌÆ®µÇµµ·Ï ¹Ù²Ù½Ã¿À.
+-- ì£¼ë¬¸í…Œì´ë¸”ì„ ìƒì„±í•˜ê³  ìƒí’ˆì½”ë“œë¥¼ ì™¸ë˜í‚¤ë¥¼ í†µí•´ ì°¸ì¡°í•˜ì‹œì˜¤.
+-- ë‹¨, ìƒí’ˆì½”ë“œê°€ ìˆ˜ì •ë˜ê±°ë‚˜ ì‚­ì œë ë•Œë„ ì—…ë°ì´íŠ¸ë˜ë„ë¡ ë°”ê¾¸ì‹œì˜¤.
 
-create table ÁÖ¹®
-(ÁÖ¹®ÄÚµå int identity primary key,
-¾ÆÀÌµğ char(10),
-»óÇ°ÄÚµå char(3) foreign key references 
-»óÇ°(»óÇ°ÄÚµå) on update cascade on delete cascade,
-¼ö·® int)  
+create table ì£¼ë¬¸
+(ì£¼ë¬¸ì½”ë“œ int identity primary key,
+ì•„ì´ë”” char(10),
+ìƒí’ˆì½”ë“œ char(3) foreign key references 
+ìƒí’ˆ(ìƒí’ˆì½”ë“œ) on update cascade on delete cascade,
+ìˆ˜ëŸ‰ int)  
 
-exec sp_helpconstraint ÁÖ¹®
+-- ìì‹ì„ ë¨¼ì € ì‚­ì œí•˜ê³  ë¶€ëª¨ë¥¼ ì‚­ì œí•¨.
+-- ì°¸ì¡°ë˜ëŠ” í‚¤ëŠ” ë°˜ë“œì‹œ ê¸°ë³¸í‚¤(pk)ì—¬ì•¼ í•¨
+  
+exec sp_helpconstraint ì£¼ë¬¸
 
-drop table ÁÖ¹®
+drop table ì£¼ë¬¸
